@@ -5,6 +5,15 @@ const fs = require('fs')
 const { Reader } = require('@dogrocker/thaismartcardreader')
 const path = require('path')
 
+var dir = './data';
+try {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+} catch (err) {
+  console.error(err)
+}
+
 const moment = require('moment');
 
 const WebSocket = require('ws');
