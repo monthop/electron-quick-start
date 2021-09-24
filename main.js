@@ -2,6 +2,14 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+const wss = require('./wss')
+const web = require('./web')
+const sc = require('./sc')
+
+var aa = wss();
+var mm = web();
+var nn = sc();
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -16,13 +24,19 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+
+app.whenReady().then( () => {
+
+  mm.get('/sc-test', (req, res) => {
+    res.json({ msg: 'Hello SC-TEST'});
+  })
+
   createWindow()
 
   app.on('activate', function () {

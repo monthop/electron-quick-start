@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' ws://localhost:4000 http://localhost:3000; script-src 'self' ws://localhost:4000 http://localhost:3000 data: ws://localhost:4000 http://localhost:3000; ">
     <title>Hello World!</title>
   </head>
   <body>
